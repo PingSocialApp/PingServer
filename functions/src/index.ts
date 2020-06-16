@@ -30,20 +30,6 @@ export const newUser = functions.auth.user().onCreate((user) => {
         twitterID: '',
         venmoID: '',
         websiteID: '',
-        sendingMessage: [
-            'Call me',
-            'Urgent',
-            'Missing you',
-            'What\'s up',
-            'Text me'
-        ],
-        responseMessage: [
-            'Okay',
-            'No',
-            'Me too',
-            'Working',
-            'Having fun'
-        ],
         profilepic: 'https://picsum.photos/seed/' + seed + '/300'
     }).then(result => {
         console.log('New User Created');
