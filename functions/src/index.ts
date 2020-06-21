@@ -16,7 +16,7 @@ admin.initializeApp({
 // });
 
 export const newUser = functions.auth.user().onCreate((user) => {
-    let seed = Math.floor(Math.random() * Math.floor(10000));
+    const seed = Math.floor(Math.random() * Math.floor(10000));
     admin.firestore().doc('users/' + user.uid).set({
         name: user.displayName,
         bio: 'Just Chilling',
@@ -35,6 +35,14 @@ export const newUser = functions.auth.user().onCreate((user) => {
         console.log('New User Created');
     }).catch(e => {
         console.log(e);
+    });
+    admin.firestore().doc('users/' + user.uid).set({
+        preferences: [],
+        valueTraits: []
+    }).then(r => {
+        console.log('Preferences Created')
+    }).catch(e => {
+       console.log(e);
     });
 });
 
