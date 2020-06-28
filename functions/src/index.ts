@@ -36,11 +36,11 @@ export const newUser = functions.auth.user().onCreate((user) => {
     }).catch(e => {
         console.log(e);
     });
-    admin.firestore().doc('users/' + user.uid).set({
+    admin.firestore().doc('preferences/' + user.uid).set({
         preferences: [],
         valueTraits: []
     }).then(r => {
-        console.log('Preferences Created')
+        console.log('Preferences Created');
     }).catch(e => {
        console.log(e);
     });
